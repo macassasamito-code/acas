@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="pt-MZ" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ACAS | Auditoria, Consultoria de Alimentos e Serviços, Lda.</title>
+  <meta name="description" content="Soluções completas para o setor alimentício em Moçambique. Consultoria, Auditoria ISO/FSSC 22000, Assuntos Regulatórios, Sustentabilidade e Cursos Especializados." />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Plus Jakarta Sans, Montserrat & Caveat (for handwritten slogan style) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            acas: {
+              lime: '#A5CE3A',
+              green: '#5BB947',
+              dark: '#0A5C26',
+              deeper: '#063B17',
+              black: '#000000',
+              soft: '#F2F9EE'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Montserrat"', 'sans-serif'],
+            hand: ['"Caveat"', 'cursive']
+          },
+          animation: {
+            'float-slow': 'floatSlow 6s ease-in-out infinite',
+            'float-delayed': 'floatSlow 7s ease-in-out 2s infinite',
+            'pulse-glow': 'pulseGlow 2.5s infinite',
+            'spin-slow': 'spin 18s linear infinite',
+            'shimmer': 'shimmer 2.5s linear infinite'
+          },
+          keyframes: {
+            floatSlow: {
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '50%': { transform: 'translateY(-14px) rotate(1.5deg)' }
+            },
+            pulseGlow: {
+              '0%, 100%': { boxShadow: '0 0 0 0 rgba(91, 185, 71, 0.7)' },
+              '50%': { boxShadow: '0 0 0 14px rgba(91, 185, 71, 0)' }
+            },
+            shimmer: {
+              '0%': { backgroundPosition: '-200% 0' },
+              '100%': { backgroundPosition: '200% 0' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom 3D Parallax & Interactive Styles */
+    :root {
+      --acas-lime: #A5CE3A;
+      --acas-green: #5BB947;
+      --acas-dark: #0A5C26;
+    }
+
+    body {
+      overflow-x: hidden;
+      background-color: #F8FAF7;
+      color: #0F172A;
+    }
+
+    /* 3D Perspective Containers */
+    .perspective-stage {
+      perspective: 1200px;
+      transform-style: preserve-3d;
+    }
+
+    .parallax-card {
+      transform-style: preserve-3d;
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
+      will-change: transform;
+    }
+
+    .parallax-layer-deep {
+      transform: translateZ(45px);
+    }
+
+    .parallax-layer-mid {
+      transform: translateZ(25px);
+    }
+
+    /* Animated Icon Micro-Interactions */
+    .service-card:hover .icon-badge {
+      transform: scale(1.14) rotate(-8deg) translateY(-4px);
+      background: linear-gradient(135deg, #A5CE3A 0%, #5BB947 100%);
+      box-shadow: 0 14px 28px -6px rgba(91, 185, 71, 0.45);
+    }
+
+    .icon-badge {
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* Button Liquid & Magnetic Hover Effects */
+    .btn-magnetic {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .btn-magnetic::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 45%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.28);
+      transform: rotate(30deg);
+      transition: all 0.65s ease;
+    }
+    .btn-magnetic:hover::after {
+      left: 130%;
+    }
+    .btn-magnetic:hover {
+      transform: translateY(-3px) scale(1.02);
+    }
+    .btn-magnetic:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    /* Organic Wave Divider */
+    .organic-wave {
+      background: linear-gradient(135deg, #063B17 0%, #0A5C26 55%, #167936 100%);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #063B17;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #A5CE3A, #5BB947);
+      border-radius: 9999px;
+    }
+
+    /* Glassmorphism utilities */
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .glass-dark {
+      background: rgba(6, 59, 23, 0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    /* Simulated Video / Ambient Lab Overlay */
+    .video-ambient-bg {
+      background: 
+        radial-gradient(circle at 20% 25%, rgba(165, 206, 58, 0.28) 0%, transparent 45%),
+        radial-gradient(circle at 80% 30%, rgba(91, 185, 71, 0.30) 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(10, 92, 38, 0.85) 0%, transparent 70%),
+        linear-gradient(135deg, #04280F 0%, #0A5C26 48%, #073B18 100%);
+    }
+
+    /* Petri Dish Colony Pulse */
+    .colony-dot {
+      animation: colonyPulse 3s ease-in-out infinite alternate;
+    }
+    @keyframes colonyPulse {
+      0% { transform: scale(0.85); opacity: 0.6; }
+      100% { transform: scale(1.25); opacity: 1; }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-acas-lime selection:text-acas-deeper">
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="bg-acas-deeper text-white text-xs sm:text-sm py-2.5 px-4 border-b border-acas-lime/20 relative z-50">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-acas-lime text-acas-deeper animate-pulse">
+          INSCRIÇÕES ABERTAS
+        </span>
+        <span class="font-medium text-emerald-100 truncate sm:whitespace-normal">
+          Curso Presencial: <strong class="text-white">Monitoramento Ambiental na Indústria de Alimentos (8h)</strong>
+        </span>
+      </div>
+      <div class="hidden md:flex items-center gap-5 text-emerald-100">
+        <a href="tel:+258874734981" class="hover:text-acas-lime transition flex items-center gap-1.5">
+          <i data-lucide="phone-call" class="w-3.5 h-3.5 text-acas-lime"></i> (+258) 874734981
+        </a>
+        <a href="mailto:infoacasconsult@gmail.com" class="hover:text-acas-lime transition flex items-center gap-1.5">
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-acas-lime"></i> infoacasconsult@gmail.com
+        </a>
+        <button onclick="openDeployModal()" class="text-xs bg-white/10 hover:bg-acas-lime hover:text-acas-deeper px-2.5 py-1 rounded-md font-semibold transition flex items-center gap-1">
+          <i data-lucide="github" class="w-3.5 h-3.5"></i> Guia GitHub + Hostinger
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY HEADER -->
+  <header id="main-header" class="sticky top-0 z-40 glass-nav border-b border-emerald-900/10 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- ACAS BRAND LOGO (Faithful Vector Recreation from Image) -->
+      <a href="#inicio" class="flex items-center gap-3.5 group focus:outline-none">
+        <div class="relative w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0 transition-transform duration-500 group-hover:scale-105">
+          <svg viewBox="0 0 200 200" class="w-full h-full drop-shadow-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Outer Green Arc -->
+            <path d="M98 16 C148 16 186 56 186 104 C186 152 148 190 98 190 C58 190 25 164 15 127" stroke="#5BB947" stroke-width="6.5" stroke-linecap="round"/>
+            <!-- Stylized Rounded 'A' -->
+            <path d="M100 45 L58 152 M100 45 L142 152" stroke="url(#acasGrad)" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Crossbar Wave of 'A' -->
+            <path d="M65 112 Q102 117 134 134" stroke="#A5CE3A" stroke-width="16" stroke-linecap="round"/>
+            <!-- Organic Sprouting Leaves on Left Stem -->
+            <path d="M72 118 C46 95 45 55 72 25 C80 16 92 14 96 20" stroke="#A5CE3A" stroke-width="5" stroke-linecap="round"/>
+            <!-- Top Leaf -->
+            <path d="M63 42 C72 20 88 12 95 18 C82 28 75 38 63 42 Z" fill="#A5CE3A"/>
+            <!-- Upper Left Leaf -->
+            <path d="M52 68 C45 45 52 28 38 25 C58 22 65 48 52 68 Z" fill="#A5CE3A"/>
+            <!-- Mid Leaf -->
+            <path d="M54 82 C54 60 66 44 76 48 C65 56 66 72 54 82 Z" fill="#8CC63F"/>
+            <!-- Lower Left Leaf -->
+            <path d="M65 112 C42 115 32 95 16 98 C28 84 48 92 65 112 Z" fill="#A5CE3A"/>
+            <!-- Inner Curl -->
+            <path d="M75 112 C58 100 62 78 72 80" stroke="#8CC63F" stroke-width="4.5" stroke-linecap="round"/>
+            <!-- ACAS Serif Text -->
+            <text x="100" y="177" text-anchor="middle" fill="#1E7E34" font-family="Georgia, serif" font-weight="bold" font-size="25" letter-spacing="1.5">ACAS</text>
+            <defs>
+              <linearGradient id="acasGrad" x1="60" y1="40" x2="140" y2="160" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#A5CE3A"/>
+                <stop offset="60%" stop-color="#5BB947"/>
+                <stop offset="100%" stop-color="#0A5C26"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-extrabold text-sm sm:text-base md:text-lg leading-tight text-slate-900 group-hover:text-acas-dark transition">
+            Auditoria, Consultoria
+          </span>
+          <span class="font-display font-bold text-xs sm:text-sm leading-tight text-slate-700">
+            de Alimentos e Serviços, Lda.
+          </span>
+          <span class="font-hand text-base sm:text-lg text-acas-dark font-bold -mt-0.5">
+            Qualidade e Segurança para o seu negócio!
+          </span>
+        </div>
+      </a>
+
+      <!-- DESKTOP NAVIGATION -->
+      <nav class="hidden lg:flex items-center gap-1 xl:gap-2">
+        <a href="#inicio" class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-acas-dark hover:bg-acas-lime/15 transition">Início</a>
+        <a href="#servicos" class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-acas-dark hover:bg-acas-lime/15 transition">Serviços</a>
+        <a href="#curso-destaque" class="px-3.5 py-2 rounded-lg text-sm font-semibold text-acas-dark bg-acas-lime/20 hover:bg-acas-lime/35 transition flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-acas-green animate-ping"></span>
+          Monitoramento Ambiental
+        </a>
+        <a href="#catalogo-cursos" class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-acas-dark hover:bg-acas-lime/15 transition">Mais Cursos</a>
+        <a href="#diagnostico" class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-acas-dark hover:bg-acas-lime/15 transition">Diagnóstico Rápido</a>
+        <a href="#contactos" class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-acas-dark hover:bg-acas-lime/15 transition">Contactos</a>
+      </nav>
+
+      <!-- HEADER ACTION BUTTONS -->
+      <div class="hidden sm:flex items-center gap-3">
+        <button onclick="openBookingModal('Inscrição: Curso Monitoramento Ambiental')" class="btn-magnetic animate-pulse-glow bg-gradient-to-r from-acas-dark via-acas-green to-acas-lime text-white font-display font-bold text-xs sm:text-sm px-5 py-3 rounded-xl shadow-lg flex items-center gap-2">
+          <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+          <span>Inscrições Abertas</span>
+        </button>
+      </div>
+
+      <!-- MOBILE MENU BUTTON -->
+      <button id="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Abrir Menu" class="lg:hidden p-2.5 rounded-xl bg-acas-soft text-acas-dark hover:bg-acas-lime/30 transition">
+        <i data-lucide="menu" id="menu-icon-open" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- MOBILE NAVIGATION DRAWER -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3 shadow-2xl">
+      <div class="grid grid-cols-1 gap-1.5">
+        <a href="#inicio" onclick="toggleMobileMenu()" class="px-4 py-2.5 rounded-xl font-semibold text-slate-800 hover:bg-acas-soft flex items-center gap-2.5">
+          <i data-lucide="home" class="w-4 h-4 text-acas-green"></i> Início
+        </a>
+        <a href="#servicos" onclick="toggleMobileMenu()" class="px-4 py-2.5 rounded-xl font-semibold text-slate-800 hover:bg-acas-soft flex items-center gap-2.5">
+          <i data-lucide="briefcase" class="w-4 h-4 text-acas-green"></i> 5 Pilares de Serviços
+        </a>
+        <a href="#curso-destaque" onclick="toggleMobileMenu()" class="px-4 py-2.5 rounded-xl font-bold text-acas-dark bg-acas-lime/20 flex items-center justify-between">
+          <span class="flex items-center gap-2.5"><i data-lucide="microscope" class="w-4 h-4 text-acas-dark"></i> Curso: Monitoramento Ambiental</span>
+          <span class="text-[11px] bg-acas-dark text-white px-2 py-0.5 rounded-full">8 Horas</span>
+        </a>
+        <a href="#catalogo-cursos" onclick="toggleMobileMenu()" class="px-4 py-2.5 rounded-xl font-semibold text-slate-800 hover:bg-acas-soft flex items-center gap-2.5">
+          <i data-lucide="book-open" class="w-4 h-4 text-acas-green"></i> Catálogo de Formações ISO
+        </a>
+        <a href="#diagnostico" onclick="toggleMobileMenu()" class="px-4 py-2.5 rounded-xl font-semibold text-slate-800 hover:bg-acas-soft flex items-center gap-2.5">
+          <i data-lucide="clipboard-check" class="w-4 h-4 text-acas-green"></i> Diagnóstico Gratuito
+        </a>
+        <a href="#contactos" onclick="toggleMobileMenu()" class="px-4 py-2.5 rounded-xl font-semibold text-slate-800 hover:bg-acas-soft flex items-center gap-2.5">
+          <i data-lucide="map-pin" class="w-4 h-4 text-acas-green"></i> Localização e Contactos
+        </a>
+      </div>
+      <div class="pt-3 border-t border-slate-100 flex flex-col sm:flex-row gap-2.5">
+        <button onclick="toggleMobileMenu(); openBookingModal('Solicitar Proposta de Consultoria/Auditoria')" class="w-full py-3 px-4 rounded-xl bg-acas-dark text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md">
+          <i data-lucide="send" class="w-4 h-4"></i> Solicitar Consultoria / Inscrição
+        </button>
+        <button onclick="toggleMobileMenu(); openDeployModal()" class="w-full py-2.5 px-4 rounded-xl bg-slate-100 text-slate-700 font-semibold text-xs flex items-center justify-center gap-2">
+          <i data-lucide="github" class="w-4 h-4"></i> Como Hospedar (GitHub + Hostinger)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- HERO SECTION WITH 3D PARALLAX & INTERACTIVE BIO-SAFETY VIDEO CANVAS -->
+  <!-- ===================================================================== -->
+  <section id="inicio" class="relative min-h-[90vh] flex items-center video-ambient-bg text-white overflow-hidden py-14 lg:py-20">
+    
+    <!-- Interactive 3D Particle & Bio-Safety Canvas Background -->
+    <canvas id="bio-parallax-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+    <!-- Ambient Video-Style Animated Light Beams & Floating Leaves -->
+    <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+      <div class="absolute -top-24 -left-24 w-96 h-96 bg-acas-lime/20 rounded-full blur-3xl animate-float-slow"></div>
+      <div class="absolute top-1/3 -right-24 w-[28rem] h-[28rem] bg-acas-green/25 rounded-full blur-3xl animate-float-delayed"></div>
+      <div class="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#F8FAF7] to-transparent"></div>
+    </div>
+
+    <!-- Main Container with 3D Mouse Parallax Stage -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        
+        <!-- LEFT COLUMN: Corporate Mission & Interactive CTAs -->
+        <div class="lg:col-span-7 space-y-6 text-left">
+          
+          <!-- Handwritten Slogan Pill -->
+          <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-acas-lime/40 shadow-lg">
+            <span class="flex h-3 w-3 relative">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-acas-lime opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-acas-lime"></span>
+            </span>
+            <span class="font-hand text-xl sm:text-2xl text-acas-lime tracking-wide">
+              Qualidade e Segurança para o seu negócio!
+            </span>
+          </div>
+
+          <!-- Main Headline from Poster -->
+          <h1 class="font-display font-black text-3xl sm:text-5xl xl:text-6xl leading-[1.1] tracking-tight">
+            Soluções completas para o <span class="text-transparent bg-clip-text bg-gradient-to-r from-acas-lime via-emerald-300 to-white">setor alimentício.</span>
+          </h1>
+
+          <!-- Exact Mission Text from Poster -->
+          <p class="text-base sm:text-lg text-emerald-50/95 leading-relaxed max-w-2xl font-normal bg-black/20 p-4 sm:p-5 rounded-2xl border-l-4 border-acas-lime backdrop-blur-sm">
+            A <strong>ACAS</strong> oferece uma gama de serviços especializados para garantir que as organizações do setor alimentício e diversos cumpram com os requisitos obrigatórios e legais, e também visa melhorar seus processos com o objetivo de fornecer produtos de qualidade de forma consistente, para satisfazer os seus clientes.
+          </p>
+
+          <!-- Interactive Action Buttons -->
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <button onclick="openBookingModal('Solicitar Consultoria ou Auditoria')" class="btn-magnetic bg-acas-lime hover:bg-[#b5df42] text-acas-deeper font-display font-extrabold text-sm sm:text-base px-7 py-4 rounded-2xl shadow-xl flex items-center gap-3 group">
+              <span>Solicitar Consultoria / Auditoria</span>
+              <i data-lucide="arrow-up-right" class="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"></i>
+            </button>
+
+            <a href="#curso-destaque" class="btn-magnetic bg-white/15 hover:bg-white/25 text-white border border-white/30 font-display font-bold text-sm sm:text-base px-6 py-4 rounded-2xl backdrop-blur-md flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-acas-green flex items-center justify-center text-white">
+                <i data-lucide="megaphone" class="w-4 h-4 animate-bounce"></i>
+              </span>
+              <div class="text-left leading-tight">
+                <span class="block text-[10px] uppercase tracking-wider text-acas-lime font-extrabold">Inscrições Abertas</span>
+                <span>Curso Monitoramento Ambiental</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 3 Pillars Strip from Poster Bottom Right ("Mais conhecimentos | Mais segurança | Melhores resultados") -->
+          <div class="pt-4 grid grid-cols-3 gap-3 sm:gap-5 max-w-xl">
+            <div class="glass-dark p-3.5 rounded-2xl border border-acas-lime/30 hover:border-acas-lime transition group cursor-pointer">
+              <div class="flex items-center gap-2.5">
+                <div class="p-2 rounded-xl bg-acas-lime/20 text-acas-lime group-hover:scale-110 transition">
+                  <i data-lucide="pen-tool" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <span class="block text-xs text-emerald-200">Pilar 01</span>
+                  <strong class="text-xs sm:text-sm font-bold text-white leading-tight block">Mais conhecimentos</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-dark p-3.5 rounded-2xl border border-acas-lime/30 hover:border-acas-lime transition group cursor-pointer">
+              <div class="flex items-center gap-2.5">
+                <div class="p-2 rounded-xl bg-acas-lime/20 text-acas-lime group-hover:scale-110 transition">
+                  <i data-lucide="shield-check" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <span class="block text-xs text-emerald-200">Pilar 02</span>
+                  <strong class="text-xs sm:text-sm font-bold text-white leading-tight block">Mais segurança</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-dark p-3.5 rounded-2xl border border-acas-lime/30 hover:border-acas-lime transition group cursor-pointer">
+              <div class="flex items-center gap-2.5">
+                <div class="p-2 rounded-xl bg-acas-lime/20 text-acas-lime group-hover:scale-110 transition">
+                  <i data-lucide="trending-up" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <span class="block text-xs text-emerald-200">Pilar 03</span>
+                  <strong class="text-xs sm:text-sm font-bold text-white leading-tight block">Melhores resultados</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: 3D INTERACTIVE PARALLAX SHOWCASE CARD -->
+        <div class="lg:col-span-5 perspective-stage">
+          <div id="hero-3d-card" class="parallax-card relative rounded-3xl bg-gradient-to-br from-white/15 to-white/5 p-6 sm:p-8 border border-white/25 backdrop-blur-xl shadow-2xl">
+            
+            <!-- Floating Megaphone Badge (Top Right) -->
+            <div class="parallax-layer-deep absolute -top-5 -right-3 sm:-right-5 bg-gradient-to-r from-acas-dark to-acas-green text-white px-4 py-2.5 rounded-2xl shadow-xl border-2 border-acas-lime flex items-center gap-2 transform rotate-3">
+              <i data-lucide="megaphone" class="w-5 h-5 text-acas-lime animate-bounce"></i>
+              <div class="leading-none">
+                <span class="block text-[10px] font-bold uppercase tracking-wider text-acas-lime">Curso Presencial</span>
+                <span class="font-display font-black text-xs sm:text-sm">INSCRIÇÕES ABERTAS</span>
+              </div>
+            </div>
+
+            <!-- Interactive 3D Visual Lab Scene (Simulated Video & Petri Dish Analysis) -->
+            <div class="parallax-layer-mid relative rounded-2xl overflow-hidden bg-gradient-to-br from-acas-deeper via-[#0d4d22] to-slate-900 border border-acas-lime/30 p-5 mb-6">
+              <div class="flex items-center justify-between mb-4">
+                <span class="inline-flex items-center gap-1.5 text-xs font-bold text-acas-lime bg-acas-lime/15 px-3 py-1 rounded-full">
+                  <span class="w-2 h-2 rounded-full bg-acas-lime animate-ping"></span>
+                  Laboratório & Controlo de Qualidade
+                </span>
+                <span class="text-xs text-emerald-200 font-mono">ISO 22000 • HACCP</span>
+              </div>
+
+              <!-- Animated Petri Dish & Microscope Vector Art -->
+              <div class="grid grid-cols-2 gap-4 items-center py-2">
+                <!-- Interactive Petri Dish Simulation -->
+                <div class="relative flex flex-col items-center justify-center p-3 rounded-2xl bg-black/30 border border-white/10">
+                  <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-4 border-sky-200/60 bg-gradient-to-tr from-amber-300/80 via-yellow-200/75 to-lime-300/80 shadow-inner relative flex items-center justify-center overflow-hidden">
+                    <!-- Simulated microbial colonies being monitored -->
+                    <span class="colony-dot w-3 h-3 rounded-full bg-amber-600/80 absolute top-5 left-7"></span>
+                    <span class="colony-dot w-2.5 h-2.5 rounded-full bg-amber-500/90 absolute top-12 left-5" style="animation-delay:0.5s"></span>
+                    <span class="colony-dot w-4 h-4 rounded-full bg-yellow-600/75 absolute bottom-6 right-7" style="animation-delay:1.1s"></span>
+                    <span class="colony-dot w-2 h-2 rounded-full bg-orange-600/80 absolute top-7 right-6" style="animation-delay:1.7s"></span>
+                    <span class="colony-dot w-3 h-3 rounded-full bg-amber-700/70 absolute bottom-7 left-10" style="animation-delay:0.8s"></span>
+                    <!-- Grid overlay -->
+                    <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-[size:16px_16px]"></div>
+                  </div>
+                  <span class="mt-2 text-[11px] font-semibold text-emerald-100 text-center">Análise Microbiológica</span>
+                </div>
+
+                <!-- Key Certification Badges -->
+                <div class="space-y-2.5">
+                  <div class="p-2.5 rounded-xl bg-white/10 border border-white/10 flex items-center gap-2.5 hover:bg-white/20 transition">
+                    <i data-lucide="award" class="w-5 h-5 text-acas-lime flex-shrink-0"></i>
+                    <div class="text-xs">
+                      <strong class="block text-white">ISO 9001 & 22000</strong>
+                      <span class="text-emerald-200 text-[11px]">FSSC 22000 • 45001</span>
+                    </div>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-white/10 border border-white/10 flex items-center gap-2.5 hover:bg-white/20 transition">
+                    <i data-lucide="shield-alert" class="w-5 h-5 text-acas-lime flex-shrink-0"></i>
+                    <div class="text-xs">
+                      <strong class="block text-white">APPCC / HACCP</strong>
+                      <span class="text-emerald-200 text-[11px]">BPP • BPH • POP • PPHO</span>
+                    </div>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-white/10 border border-white/10 flex items-center gap-2.5 hover:bg-white/20 transition">
+                    <i data-lucide="file-check-2" class="w-5 h-5 text-acas-lime flex-shrink-0"></i>
+                    <div class="text-xs">
+                      <strong class="block text-white">Rotulagem Legal</strong>
+                      <span class="text-emerald-200 text-[11px]">Tabelas & Regulação</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Featured Course Quick Summary inside 3D Card -->
+            <div class="parallax-layer-deep space-y-4">
+              <div class="flex items-start justify-between gap-2">
+                <div>
+                  <span class="text-xs font-extrabold uppercase tracking-wider text-acas-lime">Destaque Formação</span>
+                  <h2 class="font-display font-extrabold text-lg sm:text-xl text-white leading-snug">
+                    Monitoramento Ambiental na Indústria de Alimentos
+                  </h2>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div class="bg-black/30 rounded-xl p-3 border border-white/15 flex items-center gap-2.5">
+                  <div class="w-9 h-9 rounded-lg bg-acas-lime/20 text-acas-lime flex items-center justify-center">
+                    <i data-lucide="clock" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <span class="block text-[10px] uppercase text-emerald-200 font-bold">Carga Horária</span>
+                    <strong class="text-sm sm:text-base text-white font-extrabold">8 horas</strong>
+                  </div>
+                </div>
+
+                <div class="bg-black/30 rounded-xl p-3 border border-white/15 flex items-center gap-2.5">
+                  <div class="w-9 h-9 rounded-lg bg-acas-lime/20 text-acas-lime flex items-center justify-center">
+                    <i data-lucide="users" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <span class="block text-[10px] uppercase text-emerald-200 font-bold">Regime</span>
+                    <strong class="text-xs sm:text-sm text-white font-extrabold">Presencial (c/ prática)</strong>
+                  </div>
+                </div>
+              </div>
+
+              <button onclick="openBookingModal('Inscrição: Monitoramento Ambiental na Indústria de Alimentos')" class="w-full btn-magnetic py-3.5 px-5 rounded-xl bg-gradient-to-r from-acas-lime to-acas-green text-acas-deeper font-display font-black text-sm shadow-lg flex items-center justify-center gap-2">
+                <span>Garantir a Minha Vaga Agora</span>
+                <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- SECTION 2: THE 5 CORE SERVICE PILLARS (Interactive 3D Cards + Filter) -->
+  <!-- ===================================================================== -->
+  <section id="servicos" class="py-20 lg:py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-14 space-y-4">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-acas-lime/20 text-acas-dark font-bold text-xs uppercase tracking-widest">
+          <i data-lucide="layers" class="w-4 h-4"></i> Portfólio Completo ACAS
+        </div>
+        <h2 class="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-slate-900 tracking-tight">
+          Os Nossos <span class="text-acas-dark underline decoration-acas-lime decoration-4 underline-offset-8">Serviços Especializados</span>
+        </h2>
+        <p class="text-slate-600 text-base sm:text-lg">
+          Atuamos em todas as etapas da cadeia alimentar com rigor técnico, conformidade regulamentar e foco na melhoria contínua dos seus processos.
+        </p>
+
+        <!-- Interactive Category Filter Pills -->
+        <div class="flex flex-wrap items-center justify-center gap-2 pt-3" id="service-filters">
+          <button onclick="filterServices('all')" data-filter="all" class="service-filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-acas-dark text-white shadow-md transition">
+            Todos os Serviços (5)
+          </button>
+          <button onclick="filterServices('consultoria')" data-filter="consultoria" class="service-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-700 hover:bg-acas-lime/20 border border-slate-200 transition">
+            1. Consultoria
+          </button>
+          <button onclick="filterServices('auditoria')" data-filter="auditoria" class="service-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-700 hover:bg-acas-lime/20 border border-slate-200 transition">
+            2. Auditoria
+          </button>
+          <button onclick="filterServices('treinamentos')" data-filter="treinamentos" class="service-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-700 hover:bg-acas-lime/20 border border-slate-200 transition">
+            3. Treinamentos In Company
+          </button>
+          <button onclick="filterServices('regulatorios')" data-filter="regulatorios" class="service-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-700 hover:bg-acas-lime/20 border border-slate-200 transition">
+            4. Assuntos Regulatórios
+          </button>
+          <button onclick="filterServices('sustentabilidade')" data-filter="sustentabilidade" class="service-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white text-slate-700 hover:bg-acas-lime/20 border border-slate-200 transition">
+            5. Sustentabilidade
+          </button>
+        </div>
+      </div>
+
+      <!-- Services Interactive Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="services-grid">
+        
+        <!-- 1. CONSULTORIA (Spans 2 columns on large screens for comprehensive bullet list) -->
+        <div data-category="consultoria" class="service-card lg:col-span-2 bg-white rounded-3xl p-7 sm:p-9 shadow-xl shadow-emerald-950/5 border border-emerald-900/10 hover:border-acas-green transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-40 h-40 bg-acas-lime/10 rounded-bl-full -z-0 transition-transform group-hover:scale-125"></div>
+          
+          <div class="relative z-10">
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div class="flex items-center gap-4">
+                <div class="icon-badge w-16 h-16 rounded-2xl bg-acas-dark text-white flex items-center justify-center shadow-lg">
+                  <i data-lucide="lightbulb" class="w-8 h-8"></i>
+                </div>
+                <div>
+                  <span class="text-xs font-extrabold uppercase tracking-widest text-acas-green">Pilar 01</span>
+                  <h3 class="font-display font-black text-2xl sm:text-3xl text-acas-dark">CONSULTORIA</h3>
+                </div>
+              </div>
+              <span class="px-3.5 py-1 rounded-full text-xs font-bold bg-acas-soft text-acas-dark border border-acas-green/30">
+                Implementação & Melhoria Contínua
+              </span>
+            </div>
+
+            <p class="text-slate-600 text-sm sm:text-base mb-6">
+              Acompanhamento técnico completo para elevar o padrão higiénico-sanitário, produtivo e normativo da sua organização:
+            </p>
+
+            <!-- Complete Bullet List from Poster -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-8">
+              <div class="flex items-start gap-2.5 p-3 rounded-xl bg-acas-soft/70 border border-emerald-900/5">
+                <i data-lucide="check-circle" class="w-5 h-5 text-acas-green flex-shrink-0 mt-0.5"></i>
+                <span class="text-sm font-semibold text-slate-800">Boas Práticas de Produção (BPP) e Boas Práticas de Higiene (BPH)</span>
+              </div>
+              <div class="flex items-start gap-2.5 p-3 rounded-xl bg-acas-soft/70 border border-emerald-900/5">
+                <i data-lucide="check-circle" class="w-5 h-5 text-acas-green flex-shrink-0 mt-0.5"></i>
+                <span class="text-sm font-semibold text-slate-800">Sistema APPCC / HACCP</span>
+              </div>
+              <div class="flex items-start gap-2.5 p-3 rounded-xl bg-acas-soft/70 border border-emerald-900/5">
+                <i data-lucide="check-circle" class="w-5 h-5 text-acas-green flex-shrink-0 mt-0.5"></i>
+                <span class="text-sm font-semibold text-slate-800">POP, PPHO e programas de autocontrole</span>
+              </div>
+              <div class="flex items-start gap-2.5 p-3 rounded-xl bg-acas-soft/70 border border-emerald-900/5">
+                <i data-lucide="check-circle" class="w-5 h-5 text-acas-green flex-shrink-0 mt-0.5"></i>
+                <span class="text-sm font-semibold text-slate-800">Food Defense (Defesa dos Alimentos)</span>
+              </div>
+              <div class="flex items-start gap-2.5 p-3 rounded-xl bg-acas-soft/70 border border-emerald-900/5">
+                <i data-lucide="check-circle" class="w-5 h-5 text-acas-green flex-shrink-0 mt-0.5"></i>
+                <span class="text-sm font-semibold text-slate-800">Normas e sistemas de gestão de segurança de alimentos (ISO 22000, FSSC 22000)</span>
+              </div>
+              <div class="flex items-start gap-2.5 p-3 rounded-xl bg-acas-soft/70 border border-emerald-900/5">
+                <i data-lucide="check-circle" class="w-5 h-5 text-acas-green flex-shrink-0 mt-0.5"></i>
+                <span class="text-sm font-semibold text-slate-800">Melhoramento de processos de produção</span>
+              </div>
+              <div class="flex items-start gap-2.5 p-3 rounded-xl bg-acas-soft/70 border border-emerald-900/5">
+                <i data-lucide="check-circle" class="w-5 h-5 text-acas-green flex-shrink-0 mt-0.5"></i>
+                <span class="text-sm font-semibold text-slate-800">Desenvolvimento de novos produtos</span>
+              </div>
+              <div class="flex items-start gap-2.5 p-3 rounded-xl bg-acas-soft/70 border border-emerald-900/5">
+                <i data-lucide="check-circle" class="w-5 h-5 text-acas-green flex-shrink-0 mt-0.5"></i>
+                <span class="text-sm font-semibold text-slate-800">Redução de desperdícios, Rotulagem e Informação Nutricional, entre outros.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500">Atendimento personalizado para indústrias e serviços</span>
+            <button onclick="openBookingModal('Consultoria Especializada ACAS')" class="btn-magnetic px-5 py-2.5 rounded-xl bg-acas-dark text-white font-bold text-xs sm:text-sm flex items-center gap-2">
+              <span>Pedir Consultoria</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. AUDITORIA -->
+        <div data-category="auditoria" class="service-card bg-white rounded-3xl p-7 sm:p-8 shadow-xl shadow-emerald-950/5 border border-emerald-900/10 hover:border-acas-green transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+          <div>
+            <div class="flex items-center gap-4 mb-6">
+              <div class="icon-badge w-16 h-16 rounded-2xl bg-acas-dark text-white flex items-center justify-center shadow-lg">
+                <i data-lucide="clipboard-List" class="w-8 h-8"></i>
+              </div>
+              <div>
+                <span class="text-xs font-extrabold uppercase tracking-widest text-acas-green">Pilar 02</span>
+                <h3 class="font-display font-black text-2xl text-acas-dark">AUDITORIA</h3>
+              </div>
+            </div>
+
+            <p class="text-slate-700 text-sm sm:text-base leading-relaxed mb-5">
+              Realizamos as avaliações sistemáticas para verificar se as práticas de segurança dos alimentos estão sendo seguidas corretamente.
+            </p>
+            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+              Efetuamos <strong>auditorias internas e externas</strong> das normas de sistemas de gestão, por exemplo:
+            </p>
+
+            <!-- ISO Badges Grid -->
+            <div class="grid grid-cols-2 gap-2.5 mb-6">
+              <div class="p-3 rounded-xl bg-acas-soft border border-acas-green/20 text-center">
+                <strong class="block text-acas-dark font-display font-extrabold text-sm">ISO 9001</strong>
+                <span class="text-[11px] text-slate-600">Gestão da Qualidade</span>
+              </div>
+              <div class="p-3 rounded-xl bg-acas-soft border border-acas-green/20 text-center">
+                <strong class="block text-acas-dark font-display font-extrabold text-sm">ISO 14001 / 14002</strong>
+                <span class="text-[11px] text-slate-600">Gestão Ambiental</span>
+              </div>
+              <div class="p-3 rounded-xl bg-acas-soft border border-acas-green/20 text-center">
+                <strong class="block text-acas-dark font-display font-extrabold text-sm">ISO 45001</strong>
+                <span class="text-[11px] text-slate-600">Saúde e Segurança</span>
+              </div>
+              <div class="p-3 rounded-xl bg-acas-soft border border-acas-green/20 text-center">
+                <strong class="block text-acas-dark font-display font-extrabold text-sm">ISO / FSSC 22000</strong>
+                <span class="text-[11px] text-slate-600">Segurança Alimentar</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100">
+            <button onclick="openBookingModal('Agendar Auditoria Interna / Externa')" class="w-full btn-magnetic py-3 px-4 rounded-xl bg-acas-soft hover:bg-acas-dark text-acas-dark hover:text-white font-bold text-sm transition flex items-center justify-center gap-2">
+              <span>Agendar Auditoria</span>
+              <i data-lucide="search-check" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. TREINAMENTOS IN COMPANY E ESPECIALIZAÇÕES -->
+        <div data-category="treinamentos" class="service-card bg-white rounded-3xl p-7 sm:p-8 shadow-xl shadow-emerald-950/5 border border-emerald-900/10 hover:border-acas-green transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+          <div>
+            <div class="flex items-center gap-4 mb-6">
+              <div class="icon-badge w-16 h-16 rounded-2xl bg-acas-dark text-white flex items-center justify-center shadow-lg">
+                <i data-lucide="presentation" class="w-8 h-8"></i>
+              </div>
+              <div>
+                <span class="text-xs font-extrabold uppercase tracking-widest text-acas-green">Pilar 03</span>
+                <h3 class="font-display font-black text-xl sm:text-2xl text-acas-dark leading-tight">
+                  TREINAMENTOS IN COMPANY E ESPECIALIZAÇÕES
+                </h3>
+              </div>
+            </div>
+
+            <p class="text-slate-700 text-sm sm:text-base leading-relaxed mb-6">
+              Oferecemos diversos treinamentos e especializações adaptados à realidade da sua operação:
+            </p>
+
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+                <span class="w-8 h-8 rounded-lg bg-acas-lime/30 text-acas-dark flex items-center justify-center font-bold">01</span>
+                <span class="text-sm font-semibold text-slate-800">Manipuladores de alimentos</span>
+              </li>
+              <li class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+                <span class="w-8 h-8 rounded-lg bg-acas-lime/30 text-acas-dark flex items-center justify-center font-bold">02</span>
+                <span class="text-sm font-semibold text-slate-800">Profissionais da indústria de alimentos</span>
+              </li>
+              <li class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+                <span class="w-8 h-8 rounded-lg bg-acas-lime/30 text-acas-dark flex items-center justify-center font-bold">03</span>
+                <span class="text-sm font-semibold text-slate-800">Pessoas singulares, estudantes e gestores</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100">
+            <button onclick="openBookingModal('Treinamento In Company / Especialização')" class="w-full btn-magnetic py-3 px-4 rounded-xl bg-acas-soft hover:bg-acas-dark text-acas-dark hover:text-white font-bold text-sm transition flex items-center justify-center gap-2">
+              <span>Solicitar Formação para Equipa</span>
+              <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4. ASSUNTOS REGULATÓRIOS -->
+        <div data-category="regulatorios" class="service-card bg-white rounded-3xl p-7 sm:p-8 shadow-xl shadow-emerald-950/5 border border-emerald-900/10 hover:border-acas-green transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+          <div>
+            <div class="flex items-center gap-4 mb-6">
+              <div class="icon-badge w-16 h-16 rounded-2xl bg-acas-dark text-white flex items-center justify-center shadow-lg">
+                <i data-lucide="file-search" class="w-8 h-8"></i>
+              </div>
+              <div>
+                <span class="text-xs font-extrabold uppercase tracking-widest text-acas-green">Pilar 04</span>
+                <h3 class="font-display font-black text-xl sm:text-2xl text-acas-dark leading-tight">
+                  ASSUNTOS REGULATÓRIOS
+                </h3>
+              </div>
+            </div>
+
+            <!-- Rotulagem Box -->
+            <div class="mb-4 p-4 rounded-2xl bg-acas-soft/80 border border-acas-green/20">
+              <h4 class="font-display font-extrabold text-sm text-acas-dark uppercase tracking-wide mb-2 flex items-center gap-2">
+                <i data-lucide="tag" class="w-4 h-4 text-acas-green"></i> Rotulagem
+              </h4>
+              <ul class="space-y-1.5 text-xs sm:text-sm text-slate-700">
+                <li class="flex items-start gap-2"><span class="text-acas-green font-bold">•</span> Informações obrigatórias de rotulagem</li>
+                <li class="flex items-start gap-2"><span class="text-acas-green font-bold">•</span> Tabelas nutricionais</li>
+                <li class="flex items-start gap-2"><span class="text-acas-green font-bold">•</span> Assessoria e avaliação das artes de rotulagem</li>
+              </ul>
+            </div>
+
+            <!-- Suporte Em Box -->
+            <div class="mb-6 p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
+              <h4 class="font-display font-extrabold text-sm text-acas-dark uppercase tracking-wide mb-2 flex items-center gap-2">
+                <i data-lucide="scale" class="w-4 h-4 text-acas-green"></i> Suporte Especializado em:
+              </h4>
+              <ul class="space-y-2 text-xs sm:text-sm text-slate-700">
+                <li class="flex items-start gap-2"><span class="text-acas-green font-bold">•</span> Solução de dúvidas sobre assuntos regulamentares e legais</li>
+                <li class="flex items-start gap-2"><span class="text-acas-green font-bold">•</span> <strong>Apoio para P&D:</strong> aconselhamento sobre legislação, avaliação de adequação legal de formulações</li>
+                <li class="flex items-start gap-2"><span class="text-acas-green font-bold">•</span> <strong>Apoio para Marketing:</strong> aconselhamento e avaliação crítica de “claims” e de propaganda de alimentos, falsas publicidades.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100">
+            <button onclick="openBookingModal('Assessoria em Assuntos Regulatórios e Rotulagem')" class="w-full btn-magnetic py-3 px-4 rounded-xl bg-acas-soft hover:bg-acas-dark text-acas-dark hover:text-white font-bold text-sm transition flex items-center justify-center gap-2">
+              <span>Avaliar Rótulos & Legislação</span>
+              <i data-lucide="shield-check" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 5. SUSTENTABILIDADE & PRECIFICAÇÃO -->
+        <div data-category="sustentabilidade" class="service-card bg-white rounded-3xl p-7 sm:p-8 shadow-xl shadow-emerald-950/5 border border-emerald-900/10 hover:border-acas-green transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+          <div>
+            <div class="flex items-center gap-4 mb-6">
+              <div class="icon-badge w-16 h-16 rounded-2xl bg-acas-dark text-white flex items-center justify-center shadow-lg">
+                <i data-lucide="sprout" class="w-8 h-8"></i>
+              </div>
+              <div>
+                <span class="text-xs font-extrabold uppercase tracking-widest text-acas-green">Pilar 05</span>
+                <h3 class="font-display font-black text-xl sm:text-2xl text-acas-dark leading-tight">
+                  SUSTENTABILIDADE & PRECIFICAÇÃO
+                </h3>
+              </div>
+            </div>
+
+            <p class="text-slate-700 text-sm sm:text-base leading-relaxed mb-5">
+              Implementamos ações de sustentabilidade nos estabelecimentos, ajudando a <strong>reduzir o desperdício de alimentos</strong> e a melhorar o desempenho financeiro e ambiental da empresa.
+            </p>
+
+            <div class="space-y-3 mb-6">
+              <div class="p-3.5 rounded-2xl bg-acas-soft border border-acas-green/20 flex items-start gap-3">
+                <i data-lucide="leaf" class="w-5 h-5 text-acas-dark flex-shrink-0 mt-0.5"></i>
+                <div class="text-xs sm:text-sm">
+                  <strong class="block text-acas-dark">Combate ao Desperdício</strong>
+                  <span class="text-slate-600">Otimização de matéria-prima e eficiência ecológica.</span>
+                </div>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-acas-soft border border-acas-green/20 flex items-start gap-3">
+                <i data-lucide="calculator" class="w-5 h-5 text-acas-dark flex-shrink-0 mt-0.5"></i>
+                <div class="text-xs sm:text-sm">
+                  <strong class="block text-acas-dark">Cálculo de Custos e Precificação</strong>
+                  <span class="text-slate-600">Ajudamos a calcular o custo dos produtos e precificação estratégica de novos produtos.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100">
+            <button onclick="openBookingModal('Consultoria em Sustentabilidade e Precificação')" class="w-full btn-magnetic py-3 px-4 rounded-xl bg-acas-soft hover:bg-acas-dark text-acas-dark hover:text-white font-bold text-sm transition flex items-center justify-center gap-2">
+              <span>Otimizar Custos e Sustentabilidade</span>
+              <i data-lucide="trending-up" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- SECTION 3: FEATURED COURSE SPOTLIGHT (Right Banner from Image)        -->
+  <!-- ===================================================================== -->
+  <section id="curso-destaque" class="py-20 lg:py-24 organic-wave text-white relative overflow-hidden">
+    <!-- Decorative Organic Shapes -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-acas-lime/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-10 w-80 h-80 bg-acas-green/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        
+        <!-- Left Content: Course Details & Interactive Checklist -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <div class="flex flex-wrap items-center gap-3">
+            <!-- Green Pill CURSO + Graduation Cap -->
+            <div class="inline-flex items-center gap-2.5 bg-acas-green px-5 py-2 rounded-full shadow-lg border border-acas-lime">
+              <span class="font-display font-black text-lg tracking-wider text-white">CURSO</span>
+              <i data-lucide="graduation-cap" class="w-6 h-6 text-white"></i>
+            </div>
+
+            <!-- Megaphone Badge INSCRIÇÕES ABERTAS -->
+            <div class="inline-flex items-center gap-2 bg-acas-lime text-acas-deeper px-4 py-2 rounded-full font-display font-black text-xs sm:text-sm shadow-lg animate-pulse">
+              <i data-lucide="megaphone" class="w-4 h-4"></i>
+              <span>INSCRIÇÕES ABERTAS</span>
+            </div>
+          </div>
+
+          <h2 class="font-display font-black text-3xl sm:text-5xl leading-[1.12] text-white">
+            Monitoramento Ambiental na Indústria de Alimentos
+          </h2>
+
+          <p class="text-lg sm:text-xl text-acas-lime font-semibold">
+            Prevenção de riscos, mais segurança e qualidade para os seus produtos.
+          </p>
+
+          <!-- Carga Horária & Regime Cards (Exact Match to Poster) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 flex items-center gap-4 hover:border-acas-lime transition">
+              <div class="w-14 h-14 rounded-full bg-acas-green text-white flex items-center justify-center flex-shrink-0 shadow-md">
+                <i data-lucide="clock" class="w-7 h-7"></i>
+              </div>
+              <div>
+                <span class="block text-xs font-bold uppercase tracking-wider text-emerald-200">CARGA HORÁRIA</span>
+                <strong class="font-display font-black text-2xl sm:text-3xl text-white">8 horas</strong>
+              </div>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 flex items-center gap-4 hover:border-acas-lime transition">
+              <div class="w-14 h-14 rounded-full bg-acas-green text-white flex items-center justify-center flex-shrink-0 shadow-md">
+                <i data-lucide="users" class="w-7 h-7"></i>
+              </div>
+              <div>
+                <span class="block text-xs font-bold uppercase tracking-wider text-emerald-200">REGIME</span>
+                <strong class="font-display font-black text-xl sm:text-2xl text-white block leading-none">PRESENCIAL</strong>
+                <span class="text-xs font-semibold text-acas-lime">(com prática)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Handwritten Quote from Poster -->
+          <div class="pt-2">
+            <p class="font-hand text-2xl sm:text-3xl text-acas-lime">
+              "Invista na sua formação e no futuro do seu negócio!"
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-4 pt-2">
+            <button onclick="openBookingModal('Inscrição: Curso Monitoramento Ambiental (8h Presencial)')" class="btn-magnetic bg-acas-lime hover:bg-white text-acas-deeper font-display font-black text-base px-8 py-4 rounded-2xl shadow-2xl flex items-center gap-3">
+              <span>Inscrever-me Neste Curso</span>
+              <i data-lucide="arrow-right-circle" class="w-5 h-5"></i>
+            </button>
+            <a href="https://wa.me/258874734981?text=Ol%C3%A1%20ACAS!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Curso%20de%20Monitoramento%20Ambiental%20na%20Ind%C3%BAstria%20de%20Alimentos." target="_blank" rel="noopener noreferrer" class="btn-magnetic bg-white/10 hover:bg-white/20 text-white border border-white/30 font-bold text-sm sm:text-base px-6 py-4 rounded-2xl flex items-center gap-2.5">
+              <i data-lucide="message-circle" class="w-5 h-5 text-acas-lime"></i>
+              <span>Falar no WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Content: Interactive Conteúdo Programático Card -->
+        <div class="lg:col-span-5">
+          <div class="bg-white text-slate-900 rounded-3xl p-6 sm:p-8 shadow-2xl border-4 border-acas-lime relative">
+            
+            <!-- Header Pill -->
+            <div class="flex items-center gap-3 bg-acas-dark text-white px-5 py-3.5 rounded-2xl -mt-10 mb-6 shadow-lg">
+              <div class="w-10 h-10 rounded-xl bg-acas-lime text-acas-deeper flex items-center justify-center flex-shrink-0">
+                <i data-lucide="book-open-check" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <span class="text-[10px] uppercase tracking-widest text-acas-lime font-bold block">7 Módulos Essenciais</span>
+                <h3 class="font-display font-black text-base sm:text-lg tracking-wide">CONTEÚDO PROGRAMÁTICO</h3>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-500 mb-4">
+              Clique nos módulos abaixo para marcar os temas de maior interesse para a sua inscrição:
+            </p>
+
+            <!-- 7 Programmatic Modules from Poster -->
+            <div class="space-y-2.5" id="course-modules-list">
+              <label class="flex items-center gap-3.5 p-3 rounded-xl bg-acas-soft/60 hover:bg-acas-lime/20 border border-emerald-900/10 cursor-pointer transition group">
+                <input type="checkbox" checked class="w-5 h-5 accent-acas-dark rounded cursor-pointer" />
+                <span class="text-sm sm:text-base font-bold text-slate-800 group-hover:text-acas-dark">1. Introdução à microbiologia de alimentos</span>
+              </label>
+
+              <label class="flex items-center gap-3.5 p-3 rounded-xl bg-acas-soft/60 hover:bg-acas-lime/20 border border-emerald-900/10 cursor-pointer transition group">
+                <input type="checkbox" checked class="w-5 h-5 accent-acas-dark rounded cursor-pointer" />
+                <span class="text-sm sm:text-base font-bold text-slate-800 group-hover:text-acas-dark">2. Higiene alimentar</span>
+              </label>
+
+              <label class="flex items-center gap-3.5 p-3 rounded-xl bg-acas-soft/60 hover:bg-acas-lime/20 border border-emerald-900/10 cursor-pointer transition group">
+                <input type="checkbox" checked class="w-5 h-5 accent-acas-dark rounded cursor-pointer" />
+                <span class="text-sm sm:text-base font-bold text-slate-800 group-hover:text-acas-dark">3. Boas práticas de fabrico de alimentos</span>
+              </label>
+
+              <label class="flex items-center gap-3.5 p-3 rounded-xl bg-acas-soft/60 hover:bg-acas-lime/20 border border-emerald-900/10 cursor-pointer transition group">
+                <input type="checkbox" checked class="w-5 h-5 accent-acas-dark rounded cursor-pointer" />
+                <span class="text-sm sm:text-base font-bold text-slate-800 group-hover:text-acas-dark">4. Boas práticas de higiene</span>
+              </label>
+
+              <label class="flex items-center gap-3.5 p-3 rounded-xl bg-acas-soft/60 hover:bg-acas-lime/20 border border-emerald-900/10 cursor-pointer transition group">
+                <input type="checkbox" checked class="w-5 h-5 accent-acas-dark rounded cursor-pointer" />
+                <span class="text-sm sm:text-base font-bold text-slate-800 group-hover:text-acas-dark">5. Controlo e monitoramento ambiental</span>
+              </label>
+
+              <label class="flex items-center gap-3.5 p-3 rounded-xl bg-acas-soft/60 hover:bg-acas-lime/20 border border-emerald-900/10 cursor-pointer transition group">
+                <input type="checkbox" checked class="w-5 h-5 accent-acas-dark rounded cursor-pointer" />
+                <span class="text-sm sm:text-base font-bold text-slate-800 group-hover:text-acas-dark">6. Legislação e requisitos aplicáveis</span>
+              </label>
+
+              <label class="flex items-center gap-3.5 p-3 rounded-xl bg-acas-soft/60 hover:bg-acas-lime/20 border border-emerald-900/10 cursor-pointer transition group">
+                <input type="checkbox" checked class="w-5 h-5 accent-acas-dark rounded cursor-pointer" />
+                <span class="text-sm sm:text-base font-bold text-slate-800 group-hover:text-acas-dark">7. Estudos de caso e práticas</span>
+              </label>
+            </div>
+
+            <!-- Certificate Note -->
+            <div class="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between text-xs text-slate-600">
+              <span class="flex items-center gap-1.5 font-semibold text-acas-dark">
+                <i data-lucide="award" class="w-4 h-4 text-acas-green"></i> Inclui Material e Certificado ACAS
+              </span>
+              <span class="font-bold text-slate-800">Matola / Moçambique</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- SECTION 4: ADDITIONAL SPECIALIZED COURSES CATALOG                     -->
+  <!-- ===================================================================== -->
+  <section id="catalogo-cursos" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="text-xs font-extrabold uppercase tracking-widest text-acas-green block mb-2">Formação Profissional Especializada</span>
+          <h2 class="font-display font-black text-3xl sm:text-4xl text-slate-900">
+            Outros Cursos e Certificações <span class="text-acas-dark">ACAS</span>
+          </h2>
+        </div>
+        <p class="text-slate-600 text-sm sm:text-base max-w-md">
+          Capacitação contínua para estudantes, profissionais e empresas em Normas ISO, Segurança de Alimentos e Auditoria Interna.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Course 1 -->
+        <div class="rounded-2xl p-6 bg-acas-soft/50 border border-emerald-900/10 hover:border-acas-green hover:shadow-xl transition flex flex-col justify-between">
+          <div>
+            <span class="inline-block text-[11px] font-bold px-2.5 py-1 rounded-md bg-acas-lime/30 text-acas-dark mb-3">10 Dias • Online em Tempo Real</span>
+            <h3 class="font-display font-extrabold text-lg text-slate-900 mb-2">Curso de Segurança de Alimentos</h3>
+            <p class="text-xs text-slate-600 mb-4">Microbiologia, Higiene Alimentar, Boas Práticas de Fabricação e Exame Final.</p>
+          </div>
+          <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between">
+            <span class="font-display font-black text-acas-dark text-base">2.999 MTS</span>
+            <button onclick="openBookingModal('Curso de Segurança de Alimentos (2.999 MTS)')" class="text-xs font-bold text-acas-dark hover:text-acas-green flex items-center gap-1">
+              Inscrever <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Course 2 -->
+        <div class="rounded-2xl p-6 bg-acas-soft/50 border border-emerald-900/10 hover:border-acas-green hover:shadow-xl transition flex flex-col justify-between">
+          <div>
+            <span class="inline-block text-[11px] font-bold px-2.5 py-1 rounded-md bg-acas-lime/30 text-acas-dark mb-3">Carga Horária: 18 Horas</span>
+            <h3 class="font-display font-extrabold text-lg text-slate-900 mb-2">Interpretação e Implementação ISO 22000:2018</h3>
+            <p class="text-xs text-slate-600 mb-4">Sistema de Gestão da Segurança dos Alimentos completo.</p>
+          </div>
+          <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between">
+            <span class="font-display font-black text-acas-dark text-base">17.999 MT</span>
+            <button onclick="openBookingModal('Curso ISO 22000:2018 (17.999 MT)')" class="text-xs font-bold text-acas-dark hover:text-acas-green flex items-center gap-1">
+              Inscrever <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Course 3 -->
+        <div class="rounded-2xl p-6 bg-acas-soft/50 border border-emerald-900/10 hover:border-acas-green hover:shadow-xl transition flex flex-col justify-between">
+          <div>
+            <span class="inline-block text-[11px] font-bold px-2.5 py-1 rounded-md bg-acas-lime/30 text-acas-dark mb-3">Carga Horária: 26 Horas</span>
+            <h3 class="font-display font-extrabold text-lg text-slate-900 mb-2">Auditor Interno de SGI (ISO 9001, 14001 e 45001)</h3>
+            <p class="text-xs text-slate-600 mb-4">Formação completa para auditoria de Sistema de Gestão Integrado.</p>
+          </div>
+          <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between">
+            <span class="font-display font-black text-acas-dark text-base">24.999 MT</span>
+            <button onclick="openBookingModal('Curso Auditor Interno SGI (24.999 MT)')" class="text-xs font-bold text-acas-dark hover:text-acas-green flex items-center gap-1">
+              Inscrever <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Course 4 -->
+        <div class="rounded-2xl p-6 bg-acas-soft/50 border border-emerald-900/10 hover:border-acas-green hover:shadow-xl transition flex flex-col justify-between">
+          <div>
+            <span class="inline-block text-[11px] font-bold px-2.5 py-1 rounded-md bg-acas-lime/30 text-acas-dark mb-3">Carga Horária: 8 Horas</span>
+            <h3 class="font-display font-extrabold text-lg text-slate-900 mb-2">Elaboração de POP & Tratamento de Não Conformidades</h3>
+            <p class="text-xs text-slate-600 mb-4">Procedimentos Operacionais Padrão (5.999 MT) e Não Conformidades (4.999 MT).</p>
+          </div>
+          <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between">
+            <span class="font-display font-black text-acas-dark text-base">Desde 4.999 MT</span>
+            <button onclick="openBookingModal('Curso POP / Não Conformidades')" class="text-xs font-bold text-acas-dark hover:text-acas-green flex items-center gap-1">
+              Inscrever <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- SECTION 5: INTERACTIVE DIAGNOSTIC / SIMULATOR                         -->
+  <!-- ===================================================================== -->
+  <section id="diagnostico" class="py-16 bg-acas-soft border-y border-acas-green/20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-emerald-900/10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-6 space-y-4">
+            <span class="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-acas-dark bg-acas-lime/30 px-3 py-1 rounded-full">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Ferramenta Interativa ACAS
+            </span>
+            <h3 class="font-display font-black text-2xl sm:text-3xl text-slate-900">
+              Qual solução a sua empresa precisa hoje?
+            </h3>
+            <p class="text-slate-600 text-sm sm:text-base">
+              Selecione as áreas que deseja melhorar no seu estabelecimento ou indústria e receba um plano recomendado no seu WhatsApp:
+            </p>
+            <div class="space-y-2.5 pt-1" id="diag-options">
+              <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:border-acas-green cursor-pointer transition">
+                <input type="checkbox" value="Implementação de BPP, BPH e HACCP/APPCC" class="diag-check w-4 h-4 accent-acas-dark" checked />
+                <span class="text-sm font-semibold text-slate-800">Implementar Boas Práticas (BPP/BPH) e HACCP</span>
+              </label>
+              <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:border-acas-green cursor-pointer transition">
+                <input type="checkbox" value="Certificação ou Auditoria ISO 22000 / 9001 / FSSC" class="diag-check w-4 h-4 accent-acas-dark" />
+                <span class="text-sm font-semibold text-slate-800">Auditoria Interna/Externa (ISO 9001, 22000, FSSC)</span>
+              </label>
+              <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:border-acas-green cursor-pointer transition">
+                <input type="checkbox" value="Rotulagem Nutricional e Assuntos Regulatórios" class="diag-check w-4 h-4 accent-acas-dark" />
+                <span class="text-sm font-semibold text-slate-800">Rotulagem, Tabela Nutricional e Legislação</span>
+              </label>
+              <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:border-acas-green cursor-pointer transition">
+                <input type="checkbox" value="Curso Monitoramento Ambiental / Formação In Company" class="diag-check w-4 h-4 accent-acas-dark" />
+                <span class="text-sm font-semibold text-slate-800">Treinamento de Equipa ou Curso Monitoramento Ambiental</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 bg-gradient-to-br from-acas-deeper to-acas-dark text-white rounded-2xl p-6 sm:p-8 space-y-5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-widest text-acas-lime">Diagnóstico Personalizado</span>
+              <i data-lucide="shield-check" class="w-6 h-6 text-acas-lime"></i>
+            </div>
+            <p class="text-sm text-emerald-100 leading-relaxed">
+              A equipa técnica da <strong>ACAS</strong> analisará as suas prioridades e enviará uma proposta ajustada à dimensão do seu negócio em Moçambique.
+            </p>
+            <div class="space-y-3">
+              <input id="diag-name" type="text" placeholder="Seu Nome ou Nome da Empresa" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-emerald-200/70 text-sm focus:outline-none focus:border-acas-lime" />
+              <button onclick="sendDiagnosticWhatsApp()" class="w-full btn-magnetic py-3.5 px-6 rounded-xl bg-acas-lime text-acas-deeper font-display font-black text-sm shadow-lg flex items-center justify-center gap-2">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                <span>Receber Parecer Técnico via WhatsApp</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- FOOTER & CONTACT SECTION (Exact Data from Left & Right Banners)       -->
+  <!-- ===================================================================== -->
+  <footer id="contactos" class="bg-acas-deeper text-white pt-16 pb-12 relative overflow-hidden border-t-4 border-acas-lime">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Top Inspiring Banner from Poster -->
+      <div class="rounded-3xl bg-gradient-to-r from-acas-dark via-acas-green to-acas-lime p-6 sm:p-8 mb-14 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-1 text-center md:text-left">
+          <p class="font-hand text-2xl sm:text-4xl text-white drop-shadow">
+            "Juntos por um setor alimentar mais seguro, saudável e sustentável!"
+          </p>
+          <p class="text-xs sm:text-sm text-emerald-950 font-bold uppercase tracking-wider">
+            ACAS — Auditoria, Consultoria de Alimentos e Serviços, Lda.
+          </p>
+        </div>
+        <button onclick="openBookingModal('Contacto Geral ACAS')" class="btn-magnetic bg-acas-deeper text-white font-display font-bold text-sm px-6 py-3.5 rounded-2xl shadow-xl flex items-center gap-2 flex-shrink-0">
+          <i data-lucide="phone-forwarded" class="w-4 h-4 text-acas-lime"></i>
+          <span>Falar com um Consultor</span>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+        
+        <!-- Col 1: Brand Info -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-white p-1.5 flex items-center justify-center">
+              <span class="font-display font-black text-2xl text-acas-dark">A</span>
+            </div>
+            <div>
+              <h4 class="font-display font-black text-lg text-white">ACAS, Lda.</h4>
+              <p class="text-xs text-acas-lime font-semibold">Auditoria, Consultoria de Alimentos e Serviços, Lda.</p>
+            </div>
+          </div>
+          <p class="text-sm text-emerald-100/80 leading-relaxed max-w-md">
+            Garantimos que organizações do setor alimentício e diversos cumpram com os requisitos obrigatórios e legais, melhorando processos e fornecendo qualidade consistente.
+          </p>
+          <div class="flex items-center gap-3 pt-1">
+            <span class="px-3 py-1 rounded-lg bg-white/10 text-xs font-semibold text-acas-lime">ISO 22000</span>
+            <span class="px-3 py-1 rounded-lg bg-white/10 text-xs font-semibold text-acas-lime">FSSC 22000</span>
+            <span class="px-3 py-1 rounded-lg bg-white/10 text-xs font-semibold text-acas-lime">ISO 9001</span>
+            <span class="px-3 py-1 rounded-lg bg-white/10 text-xs font-semibold text-acas-lime">APPCC / HACCP</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="lg:col-span-3 space-y-3">
+          <h5 class="font-display font-extrabold text-sm uppercase tracking-wider text-acas-lime">Navegação Rápida</h5>
+          <ul class="space-y-2 text-sm text-emerald-100">
+            <li><a href="#servicos" class="hover:text-acas-lime transition">• Consultoria & BPP / HACCP</a></li>
+            <li><a href="#servicos" class="hover:text-acas-lime transition">• Auditorias Internas e Externas</a></li>
+            <li><a href="#servicos" class="hover:text-acas-lime transition">• Treinamentos In Company</a></li>
+            <li><a href="#servicos" class="hover:text-acas-lime transition">• Rotulagem e Assuntos Regulatórios</a></li>
+            <li><a href="#curso-destaque" class="hover:text-acas-lime transition">• Curso Monitoramento Ambiental</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Direct Contacts from Poster -->
+        <div class="lg:col-span-4 space-y-4">
+          <h5 class="font-display font-extrabold text-sm uppercase tracking-wider text-acas-lime">Contactos & Localização</h5>
+          
+          <a href="tel:+258874734981" class="flex items-center gap-3.5 p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition group">
+            <div class="w-10 h-10 rounded-xl bg-acas-lime text-acas-deeper flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition">
+              <i data-lucide="phone" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <span class="text-xs text-emerald-200 block">Telefone / WhatsApp</span>
+              <strong class="font-display font-extrabold text-base text-white">874734981</strong>
+            </div>
+          </a>
+
+          <a href="mailto:infoacasconsult@gmail.com" class="flex items-center gap-3.5 p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition group">
+            <div class="w-10 h-10 rounded-xl bg-acas-lime text-acas-deeper flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition">
+              <i data-lucide="mail" class="w-5 h-5"></i>
+            </div>
+            <div class="overflow-hidden">
+              <span class="text-xs text-emerald-200 block">Correio Eletrónico</span>
+              <strong class="font-semibold text-sm text-white truncate block">infoacasconsult@gmail.com</strong>
+            </div>
+          </a>
+
+          <div class="flex items-start gap-3.5 p-3 rounded-2xl bg-white/5 border border-white/10">
+            <div class="w-10 h-10 rounded-xl bg-acas-lime text-acas-deeper flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i data-lucide="map-pin" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <span class="text-xs text-emerald-200 block">Endereço Físico</span>
+              <strong class="font-semibold text-xs sm:text-sm text-white leading-snug block">
+                Cidade da Matola, Av. Patrice Lumumba, nº71, Bairro Fomento, 1º andar, perto da Builders.
+              </strong>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Copyright & Hostinger/GitHub Helper Trigger -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-200/70">
+        <p>© 2026 ACAS - Auditoria, Consultoria de Alimentos e Serviços, Lda. Todos os direitos reservados (acasconsultmz.com).</p>
+        <button onclick="openDeployModal()" class="text-acas-lime hover:underline flex items-center gap-1.5 font-semibold">
+          <i data-lucide="server" class="w-4 h-4"></i> Instruções de Publicação GitHub → Hostinger
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP ACTION BUTTON -->
+  <a href="https://wa.me/258874734981?text=Ol%C3%A1%20ACAS!%20Visitei%20o%20website%20e%20gostaria%20de%20receber%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp" class="fixed bottom-6 right-6 z-50 btn-magnetic animate-pulse-glow bg-[#25D366] text-white p-4 rounded-full shadow-2xl flex items-center gap-2 group">
+    <i data-lucide="message-circle" class="w-7 h-7"></i>
+    <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 whitespace-nowrap font-bold text-sm pr-0 group-hover:pr-2">
+      Falar no WhatsApp
+    </span>
+  </a>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 1: BOOKING / ENROLLMENT / CONSULTATION MODAL                    -->
+  <!-- ===================================================================== -->
+  <div id="booking-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border-2 border-acas-lime relative animate-[fadeIn_0.2s_ease-out]">
+      <button onclick="closeBookingModal()" class="absolute top-5 right-5 p-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-12 rounded-2xl bg-acas-dark text-acas-lime flex items-center justify-center">
+          <i data-lucide="check-Check" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-acas-green">Atendimento Direto ACAS</span>
+          <h3 id="modal-subject-title" class="font-display font-black text-lg sm:text-xl text-slate-900">Inscrição / Solicitação</h3>
+        </div>
+      </div>
+
+      <form onsubmit="submitBookingForm(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Nome Completo ou Empresa *</label>
+          <input id="form-name" type="text" required placeholder="Ex: João Matsinhe / Indústria Alimentar Lda" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-acas-dark focus:outline-none text-sm" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Telefone / WhatsApp *</label>
+            <input id="form-phone" type="tel" required placeholder="Ex: 84 / 87 000 0000" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-acas-dark focus:outline-none text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Modalidade</label>
+            <select id="form-type" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-acas-dark focus:outline-none text-sm bg-white">
+              <option value="Curso: Monitoramento Ambiental (8h Presencial)">Curso: Monitoramento Ambiental (8h)</option>
+              <option value="Consultoria (BPP, BPH, HACCP, ISO)">Consultoria (BPP, HACCP, ISO)</option>
+              <option value="Auditoria Interna / Externa">Auditoria Interna / Externa</option>
+              <option value="Treinamento In Company">Treinamento In Company</option>
+              <option value="Assuntos Regulatórios e Rotulagem">Rotulagem & Assuntos Regulatórios</option>
+              <option value="Sustentabilidade e Precificação">Sustentabilidade e Precificação</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Mensagem ou Detalhes Adicionais</label>
+          <textarea id="form-notes" rows="3" placeholder="Indique o número de participantes ou a necessidade da sua empresa..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-acas-dark focus:outline-none text-sm"></textarea>
+        </div>
+
+        <div class="pt-2 flex flex-col sm:flex-row gap-3">
+          <button type="submit" class="flex-1 btn-magnetic py-3.5 px-5 rounded-xl bg-acas-dark text-white font-display font-bold text-sm flex items-center justify-center gap-2 shadow-lg">
+            <i data-lucide="message-circle" class="w-4 h-4 text-acas-lime"></i>
+            <span>Enviar via WhatsApp (874734981)</span>
+          </button>
+          <button type="button" onclick="sendBookingByEmail()" class="py-3.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs flex items-center justify-center gap-1.5">
+            <i data-lucide="mail" class="w-4 h-4"></i> Enviar por E-mail
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 2: GITHUB + HOSTINGER + GOOGLE AI STUDIO DEPLOYMENT GUIDE       -->
+  <!-- ===================================================================== -->
+  <div id="deploy-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/75 backdrop-blur-sm p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border-2 border-acas-green relative my-8">
+      <button onclick="closeDeployModal()" class="absolute top-5 right-5 p-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-12 h-12 rounded-2xl bg-slate-900 text-acas-lime flex items-center justify-center">
+          <i data-lucide="rocket" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <span class="text-xs font-extrabold uppercase tracking-wider text-acas-green">Pronto para Produção</span>
+          <h3 class="font-display font-black text-xl text-slate-900">Guia Passo a Passo: AI Studio → GitHub → Hostinger</h3>
+        </div>
+      </div>
+
+      <div class="space-y-4 text-xs sm:text-sm text-slate-700 max-h-[65vh] overflow-y-auto pr-2">
+        <div class="p-4 rounded-2xl bg-acas-soft border border-acas-green/30">
+          <strong class="text-acas-dark block mb-1">1. Ficheiro Único Pronto (`index.html`)</strong>
+          Este código já inclui HTML5, estilização Tailwind CSS, ícones Lucide e o motor 3D Canvas/Parallax num único ficheiro `index.html`. Não requer compilação complexa para funcionar na Hostinger.
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <strong class="text-slate-900 block mb-1">2. Subir para o Repositório GitHub</strong>
+          <ol class="list-decimal list-inside space-y-1">
+            <li>Crie um repositório no GitHub (ex.: <code class="bg-slate-200 px-1.5 py-0.5 rounded">acas-website</code>).</li>
+            <li>Guarde este código com o nome exato <code class="bg-slate-200 px-1.5 py-0.5 rounded font-bold">index.html</code> na raiz do repositório.</li>
+            <li>Faça <em>Commit</em> e <em>Push</em> para a branch <code class="bg-slate-200 px-1.5 py-0.5 rounded">main</code>.</li>
+          </ol>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <strong class="text-slate-900 block mb-1">3. Conectar o GitHub à Hostinger (hPanel)</strong>
+          <ol class="list-decimal list-inside space-y-1">
+            <li>No painel da <strong>Hostinger (hPanel)</strong>, aceda a <strong>Sites → Gerenciar → Git</strong> (em Avançado).</li>
+            <li>Cole o endereço do seu repositório: <code class="bg-slate-200 px-1.5 py-0.5 rounded">https://github.com/SEU-USUARIO/acas-website.git</code> e a branch <code class="bg-slate-200 px-1.5 py-0.5 rounded">main</code>.</li>
+            <li>Deixe o diretório de instalação em branco (vai direto para <code class="bg-slate-200 px-1.5 py-0.5 rounded">public_html</code>) e clique em <strong>Implantar (Deploy)</strong>.</li>
+            <li>Ative o botão <strong>Implantação Contínua (Webhook)</strong> para que qualquer alteração no GitHub atualize o site <code class="bg-slate-200 px-1.5 py-0.5 rounded">acasconsultmz.com</code> automaticamente!</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-slate-200 flex justify-end">
+        <button onclick="closeDeployModal()" class="px-6 py-2.5 rounded-xl bg-acas-dark text-white font-bold text-sm">
+          Entendido, Fechar Guia
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPT: 3D PARALLAX, BIO-CANVAS ANIMATION & INTERACTIVITY         -->
+  <!-- ===================================================================== -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Filter Services Pillars
+    function filterServices(category) {
+      const cards = document.querySelectorAll('.service-card');
+      const buttons = document.querySelectorAll('.service-filter-btn');
+
+      buttons.forEach(btn => {
+        if (btn.getAttribute('data-filter') === category) {
+          btn.classList.add('bg-acas-dark', 'text-white', 'shadow-md');
+          btn.classList.remove('bg-white', 'text-slate-700');
+        } else {
+          btn.classList.remove('bg-acas-dark', 'text-white', 'shadow-md');
+          btn.classList.add('bg-white', 'text-slate-700');
+        }
+      });
+
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Booking Modal Logic
+    function openBookingModal(subject) {
+      const modal = document.getElementById('booking-modal');
+      const title = document.getElementById('modal-subject-title');
+      const select = document.getElementById('form-type');
+      title.textContent = subject || 'Inscrição / Solicitação ACAS';
+
+      if (subject && subject.toLowerCase().includes('monitoramento')) {
+        select.value = 'Curso: Monitoramento Ambiental (8h Presencial)';
+      } else if (subject && subject.toLowerCase().includes('auditoria')) {
+        select.value = 'Auditoria Interna / Externa';
+      } else if (subject && subject.toLowerCase().includes('rotulagem')) {
+        select.value = 'Assuntos Regulatórios e Rotulagem';
+      }
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeBookingModal() {
+      const modal = document.getElementById('booking-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function submitBookingForm(e) {
+      e.preventDefault();
+      const name = document.getElementById('form-name').value.trim();
+      const phone = document.getElementById('form-phone').value.trim();
+      const type = document.getElementById('form-type').value;
+      const notes = document.getElementById('form-notes').value.trim();
+
+      const msg = `Olá ACAS!%0A%0A*Nova Solicitação via Website*%0A• *Nome/Empresa:* ${encodeURIComponent(name)}%0A• *Contacto:* ${encodeURIComponent(phone)}%0A• *Serviço/Curso:* ${encodeURIComponent(type)}${notes ? `%0A• *Detalhes:* ${encodeURIComponent(notes)}` : ''}`;
+      window.open(`https://wa.me/258874734981?text=${msg}`, '_blank');
+      closeBookingModal();
+    }
+
+    function sendBookingByEmail() {
+      const name = document.getElementById('form-name').value.trim() || 'Cliente';
+      const phone = document.getElementById('form-phone').value.trim() || 'Não informado';
+      const type = document.getElementById('form-type').value;
+      const notes = document.getElementById('form-notes').value.trim();
+
+      const subject = encodeURIComponent(`Solicitação ACAS: ${type}`);
+      const body = encodeURIComponent(`Olá Equipa ACAS,\n\nNome/Empresa: ${name}\nTelefone: ${phone}\nInteresse: ${type}\nDetalhes: ${notes}\n\nEnviado através do website oficial.`);
+      window.location.href = `mailto:infoacasconsult@gmail.com?subject=${subject}&body=${body}`;
+    }
+
+    // Diagnostic Tool WhatsApp Sender
+    function sendDiagnosticWhatsApp() {
+      const name = document.getElementById('diag-name').value.trim() || 'Interessado';
+      const checked = Array.from(document.querySelectorAll('.diag-check:checked')).map(c => `• ${c.value}`).join('%0A');
+      const text = `Olá ACAS! Sou *${encodeURIComponent(name)}* e fiz o diagnóstico no site.%0A%0A*Áreas de Interesse:*%0A${checked || '• Consultoria Geral'}`;
+      window.open(`https://wa.me/258874734981?text=${text}`, '_blank');
+    }
+
+    // Deploy Guide Modal
+    function openDeployModal() {
+      const modal = document.getElementById('deploy-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeDeployModal() {
+      const modal = document.getElementById('deploy-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // 3D Tilt Parallax Effect on Hero Card & Service Cards
+    const heroCard = document.getElementById('hero-3d-card');
+    if (heroCard) {
+      document.addEventListener('mousemove', (e) => {
+        if (window.innerWidth < 1024) return;
+        const rect = heroCard.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const deltaX = (e.clientX - centerX) / 28;
+        const deltaY = (centerY - e.clientY) / 28;
+        const clampedX = Math.max(-10, Math.min(10, deltaX));
+        const clampedY = Math.max(-10, Math.min(10, deltaY));
+        heroCard.style.transform = `rotateY(${clampedX}deg) rotateX(${clampedY}deg)`;
+      });
+    }
+
+    // Interactive Bio-Safety 3D Particle Canvas in Hero Section
+    window.onload = function () {
+      const canvas = document.getElementById('bio-parallax-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width, height, particles;
+      let mouse = { x: -500, y: -500 };
+
+      function initCanvas() {
+        width = canvas.width = canvas.parentElement.offsetWidth;
+        height = canvas.height = canvas.parentElement.offsetHeight;
+        const count = window.innerWidth < 768 ? 28 : 55;
+        particles = [];
+        for (let i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            r: Math.random() * 3.5 + 1.2,
+            vx: (Math.random() - 0.5) * 0.65,
+            vy: (Math.random() - 0.5) * 0.65,
+            color: i % 2 === 0 ? 'rgba(165, 206, 58, 0.55)' : 'rgba(91, 185, 71, 0.45)'
+          });
+        }
+      }
+
+      window.addEventListener('resize', initCanvas);
+      window.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+
+      function animateParticles() {
+        ctx.clearRect(0, 0, width, height);
+        for (let i = 0; i < particles.length; i++) {
+          let p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
+
+          // Draw bio-particle
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+
+          // Connect nearby particles for molecular/quality network effect
+          for (let j = i + 1; j < particles.length; j++) {
+            let p2 = particles[j];
+            let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+            if (dist < 125) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(165, 206, 58, ${0.18 * (1 - dist / 125)})`;
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(animateParticles);
+      }
+
+      initCanvas();
+      animateParticles();
+    };
+  </script>
+</body>
+</html>
